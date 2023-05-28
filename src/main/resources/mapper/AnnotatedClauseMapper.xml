@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aturstudio.dao.AnnotatedClauseMapper">
+  <resultMap id="BaseResultMap" type="com.aturstudio.entity.AnnotatedClause">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sentence_id" jdbcType="INTEGER" property="sentenceId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="node_id" jdbcType="VARCHAR" property="nodeId" />
+    <result column="parent_node_id" jdbcType="VARCHAR" property="parentNodeId" />
+    <result column="clause" jdbcType="VARCHAR" property="clause" />
+    <result column="pos" jdbcType="VARCHAR" property="pos" />
+    <result column="annotator_id" jdbcType="INTEGER" property="annotatorId" />
+    <result column="annotation_time" jdbcType="TIMESTAMP" property="annotationTime" />
+    <result column="coordinator" jdbcType="VARCHAR" property="coordinator" />
+    <result column="subordinator" jdbcType="VARCHAR" property="subordinator" />
+    <result column="antecedent" jdbcType="VARCHAR" property="antecedent" />
+    <result column="offset" jdbcType="INTEGER" property="offset" />
+    <result column="subordinate_type" jdbcType="VARCHAR" property="subordinateType" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, sentence_id, level, node_id, parent_node_id, clause, pos, annotator_id, annotation_time, 
+    coordinator, subordinator, antecedent, offset, subordinate_type
+  </sql>
+  <select id="selectByExample" parameterType="com.aturstudio.entity.AnnotatedClauseExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from annotated_clause
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from annotated_clause
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from annotated_clause
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aturstudio.entity.AnnotatedClauseExample">
+    delete from annotated_clause
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aturstudio.entity.AnnotatedClause">
+    insert into annotated_clause (id, sentence_id, level, 
+      node_id, parent_node_id, clause, 
+      pos, annotator_id, annotation_time, 
+      coordinator, subordinator, antecedent, 
+      offset, subordinate_type)
+    values (#{id,jdbcType=INTEGER}, #{sentenceId,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+      #{nodeId,jdbcType=VARCHAR}, #{parentNodeId,jdbcType=VARCHAR}, #{clause,jdbcType=VARCHAR}, 
+      #{pos,jdbcType=VARCHAR}, #{annotatorId,jdbcType=INTEGER}, #{annotationTime,jdbcType=TIMESTAMP}, 
+      #{coordinator,jdbcType=VARCHAR}, #{subordinator,jdbcType=VARCHAR}, #{antecedent,jdbcType=VARCHAR}, 
+      #{offset,jdbcType=INTEGER}, #{subordinateType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aturstudio.entity.AnnotatedClause">
+    insert into annotated_clause
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sentenceId != null">
+        sentence_id,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="parentNodeId != null">
+        parent_node_id,
+      </if>
+      <if test="clause != null">
+        clause,
+      </if>
+      <if test="pos != null">
+        pos,
+      </if>
+      <if test="annotatorId != null">
+        annotator_id,
+      </if>
+      <if test="annotationTime != null">
+        annotation_time,
+      </if>
+      <if test="coordinator != null">
+        coordinator,
+      </if>
+      <if test="subordinator != null">
+        subordinator,
+      </if>
+      <if test="antecedent != null">
+        antecedent,
+      </if>
+      <if test="offset != null">
+        offset,
+      </if>
+      <if test="subordinateType != null">
+        subordinate_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sentenceId != null">
+        #{sentenceId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentNodeId != null">
+        #{parentNodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="clause != null">
+        #{clause,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        #{pos,jdbcType=VARCHAR},
+      </if>
+      <if test="annotatorId != null">
+        #{annotatorId,jdbcType=INTEGER},
+      </if>
+      <if test="annotationTime != null">
+        #{annotationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coordinator != null">
+        #{coordinator,jdbcType=VARCHAR},
+      </if>
+      <if test="subordinator != null">
+        #{subordinator,jdbcType=VARCHAR},
+      </if>
+      <if test="antecedent != null">
+        #{antecedent,jdbcType=VARCHAR},
+      </if>
+      <if test="offset != null">
+        #{offset,jdbcType=INTEGER},
+      </if>
+      <if test="subordinateType != null">
+        #{subordinateType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aturstudio.entity.AnnotatedClauseExample" resultType="java.lang.Long">
+    select count(*) from annotated_clause
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update annotated_clause
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sentenceId != null">
+        sentence_id = #{record.sentenceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.nodeId != null">
+        node_id = #{record.nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentNodeId != null">
+        parent_node_id = #{record.parentNodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clause != null">
+        clause = #{record.clause,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pos != null">
+        pos = #{record.pos,jdbcType=VARCHAR},
+      </if>
+      <if test="record.annotatorId != null">
+        annotator_id = #{record.annotatorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.annotationTime != null">
+        annotation_time = #{record.annotationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.coordinator != null">
+        coordinator = #{record.coordinator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subordinator != null">
+        subordinator = #{record.subordinator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.antecedent != null">
+        antecedent = #{record.antecedent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.offset != null">
+        offset = #{record.offset,jdbcType=INTEGER},
+      </if>
+      <if test="record.subordinateType != null">
+        subordinate_type = #{record.subordinateType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update annotated_clause
+    set id = #{record.id,jdbcType=INTEGER},
+      sentence_id = #{record.sentenceId,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
+      node_id = #{record.nodeId,jdbcType=VARCHAR},
+      parent_node_id = #{record.parentNodeId,jdbcType=VARCHAR},
+      clause = #{record.clause,jdbcType=VARCHAR},
+      pos = #{record.pos,jdbcType=VARCHAR},
+      annotator_id = #{record.annotatorId,jdbcType=INTEGER},
+      annotation_time = #{record.annotationTime,jdbcType=TIMESTAMP},
+      coordinator = #{record.coordinator,jdbcType=VARCHAR},
+      subordinator = #{record.subordinator,jdbcType=VARCHAR},
+      antecedent = #{record.antecedent,jdbcType=VARCHAR},
+      offset = #{record.offset,jdbcType=INTEGER},
+      subordinate_type = #{record.subordinateType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aturstudio.entity.AnnotatedClause">
+    update annotated_clause
+    <set>
+      <if test="sentenceId != null">
+        sentence_id = #{sentenceId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentNodeId != null">
+        parent_node_id = #{parentNodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="clause != null">
+        clause = #{clause,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        pos = #{pos,jdbcType=VARCHAR},
+      </if>
+      <if test="annotatorId != null">
+        annotator_id = #{annotatorId,jdbcType=INTEGER},
+      </if>
+      <if test="annotationTime != null">
+        annotation_time = #{annotationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coordinator != null">
+        coordinator = #{coordinator,jdbcType=VARCHAR},
+      </if>
+      <if test="subordinator != null">
+        subordinator = #{subordinator,jdbcType=VARCHAR},
+      </if>
+      <if test="antecedent != null">
+        antecedent = #{antecedent,jdbcType=VARCHAR},
+      </if>
+      <if test="offset != null">
+        offset = #{offset,jdbcType=INTEGER},
+      </if>
+      <if test="subordinateType != null">
+        subordinate_type = #{subordinateType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aturstudio.entity.AnnotatedClause">
+    update annotated_clause
+    set sentence_id = #{sentenceId,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      node_id = #{nodeId,jdbcType=VARCHAR},
+      parent_node_id = #{parentNodeId,jdbcType=VARCHAR},
+      clause = #{clause,jdbcType=VARCHAR},
+      pos = #{pos,jdbcType=VARCHAR},
+      annotator_id = #{annotatorId,jdbcType=INTEGER},
+      annotation_time = #{annotationTime,jdbcType=TIMESTAMP},
+      coordinator = #{coordinator,jdbcType=VARCHAR},
+      subordinator = #{subordinator,jdbcType=VARCHAR},
+      antecedent = #{antecedent,jdbcType=VARCHAR},
+      offset = #{offset,jdbcType=INTEGER},
+      subordinate_type = #{subordinateType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

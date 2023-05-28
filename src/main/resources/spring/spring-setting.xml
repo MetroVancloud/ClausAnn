@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!--【规则ID】到【规则基本信息、规则检验项目列表、匹配的患者列表】 -->
+    <bean id="mySetting" class="com.aturstudio.util.MySetting" scope="singleton" lazy-init="false">
+        <property name="monitorLisDaysBefore" value="7" />
+<!--
+        <property name="uploadReportUrl" value="http://localhost:8081/service/test/uploadReport.do" />
+-->
+        <property name="uploadReportUrl" value="http://172.16.90.188:80/api/chps/report/push" />
+        <property name="lowTemperatureRuleId" value="11" />
+        <property name="highTemperatureRuleId" value="12" />
+        <property name="administrativeCode" value="310110" />
+        <property name="organizationType" value="1" />
+        <property name="organizationCode" value="027955" />
+        <property name="reporterOrganizationName" value="上海交通大学医学院附属新华医院" />
+        <property name="organizationContactPerson" value="刘海涛" />
+        <property name="organizationContactPhoneNum" value="13761610814" />
+    </bean>
+
+
+
+</beans>

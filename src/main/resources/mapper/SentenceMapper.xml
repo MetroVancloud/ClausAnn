@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aturstudio.dao.SentenceMapper">
+  <resultMap id="BaseResultMap" type="com.aturstudio.entity.Sentence">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sentence_id" jdbcType="VARCHAR" property="sentenceId" />
+    <result column="document_id" jdbcType="VARCHAR" property="documentId" />
+    <result column="dataset" jdbcType="VARCHAR" property="dataset" />
+    <result column="sub_dataset" jdbcType="VARCHAR" property="subDataset" />
+    <result column="sentence" jdbcType="VARCHAR" property="sentence" />
+    <result column="pos" jdbcType="VARCHAR" property="pos" />
+    <result column="simple" jdbcType="INTEGER" property="simple" />
+    <result column="annotation_seq" jdbcType="INTEGER" property="annotationSeq" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.aturstudio.entity.Sentence">
+    <result column="amr" jdbcType="LONGVARCHAR" property="amr" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, sentence_id, document_id, dataset, sub_dataset, sentence, pos, simple, annotation_seq
+  </sql>
+  <sql id="Blob_Column_List">
+    amr
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.aturstudio.entity.SentenceExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sentence
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.aturstudio.entity.SentenceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sentence
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sentence
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sentence
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aturstudio.entity.SentenceExample">
+    delete from sentence
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aturstudio.entity.Sentence">
+    insert into sentence (id, sentence_id, document_id, 
+      dataset, sub_dataset, sentence, 
+      pos, simple, annotation_seq, 
+      amr)
+    values (#{id,jdbcType=INTEGER}, #{sentenceId,jdbcType=VARCHAR}, #{documentId,jdbcType=VARCHAR}, 
+      #{dataset,jdbcType=VARCHAR}, #{subDataset,jdbcType=VARCHAR}, #{sentence,jdbcType=VARCHAR}, 
+      #{pos,jdbcType=VARCHAR}, #{simple,jdbcType=INTEGER}, #{annotationSeq,jdbcType=INTEGER}, 
+      #{amr,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aturstudio.entity.Sentence">
+    insert into sentence
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sentenceId != null">
+        sentence_id,
+      </if>
+      <if test="documentId != null">
+        document_id,
+      </if>
+      <if test="dataset != null">
+        dataset,
+      </if>
+      <if test="subDataset != null">
+        sub_dataset,
+      </if>
+      <if test="sentence != null">
+        sentence,
+      </if>
+      <if test="pos != null">
+        pos,
+      </if>
+      <if test="simple != null">
+        simple,
+      </if>
+      <if test="annotationSeq != null">
+        annotation_seq,
+      </if>
+      <if test="amr != null">
+        amr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sentenceId != null">
+        #{sentenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="documentId != null">
+        #{documentId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataset != null">
+        #{dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="subDataset != null">
+        #{subDataset,jdbcType=VARCHAR},
+      </if>
+      <if test="sentence != null">
+        #{sentence,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        #{pos,jdbcType=VARCHAR},
+      </if>
+      <if test="simple != null">
+        #{simple,jdbcType=INTEGER},
+      </if>
+      <if test="annotationSeq != null">
+        #{annotationSeq,jdbcType=INTEGER},
+      </if>
+      <if test="amr != null">
+        #{amr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aturstudio.entity.SentenceExample" resultType="java.lang.Long">
+    select count(*) from sentence
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sentence
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sentenceId != null">
+        sentence_id = #{record.sentenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.documentId != null">
+        document_id = #{record.documentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataset != null">
+        dataset = #{record.dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subDataset != null">
+        sub_dataset = #{record.subDataset,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sentence != null">
+        sentence = #{record.sentence,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pos != null">
+        pos = #{record.pos,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simple != null">
+        simple = #{record.simple,jdbcType=INTEGER},
+      </if>
+      <if test="record.annotationSeq != null">
+        annotation_seq = #{record.annotationSeq,jdbcType=INTEGER},
+      </if>
+      <if test="record.amr != null">
+        amr = #{record.amr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update sentence
+    set id = #{record.id,jdbcType=INTEGER},
+      sentence_id = #{record.sentenceId,jdbcType=VARCHAR},
+      document_id = #{record.documentId,jdbcType=VARCHAR},
+      dataset = #{record.dataset,jdbcType=VARCHAR},
+      sub_dataset = #{record.subDataset,jdbcType=VARCHAR},
+      sentence = #{record.sentence,jdbcType=VARCHAR},
+      pos = #{record.pos,jdbcType=VARCHAR},
+      simple = #{record.simple,jdbcType=INTEGER},
+      annotation_seq = #{record.annotationSeq,jdbcType=INTEGER},
+      amr = #{record.amr,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sentence
+    set id = #{record.id,jdbcType=INTEGER},
+      sentence_id = #{record.sentenceId,jdbcType=VARCHAR},
+      document_id = #{record.documentId,jdbcType=VARCHAR},
+      dataset = #{record.dataset,jdbcType=VARCHAR},
+      sub_dataset = #{record.subDataset,jdbcType=VARCHAR},
+      sentence = #{record.sentence,jdbcType=VARCHAR},
+      pos = #{record.pos,jdbcType=VARCHAR},
+      simple = #{record.simple,jdbcType=INTEGER},
+      annotation_seq = #{record.annotationSeq,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aturstudio.entity.Sentence">
+    update sentence
+    <set>
+      <if test="sentenceId != null">
+        sentence_id = #{sentenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="documentId != null">
+        document_id = #{documentId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataset != null">
+        dataset = #{dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="subDataset != null">
+        sub_dataset = #{subDataset,jdbcType=VARCHAR},
+      </if>
+      <if test="sentence != null">
+        sentence = #{sentence,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        pos = #{pos,jdbcType=VARCHAR},
+      </if>
+      <if test="simple != null">
+        simple = #{simple,jdbcType=INTEGER},
+      </if>
+      <if test="annotationSeq != null">
+        annotation_seq = #{annotationSeq,jdbcType=INTEGER},
+      </if>
+      <if test="amr != null">
+        amr = #{amr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.aturstudio.entity.Sentence">
+    update sentence
+    set sentence_id = #{sentenceId,jdbcType=VARCHAR},
+      document_id = #{documentId,jdbcType=VARCHAR},
+      dataset = #{dataset,jdbcType=VARCHAR},
+      sub_dataset = #{subDataset,jdbcType=VARCHAR},
+      sentence = #{sentence,jdbcType=VARCHAR},
+      pos = #{pos,jdbcType=VARCHAR},
+      simple = #{simple,jdbcType=INTEGER},
+      annotation_seq = #{annotationSeq,jdbcType=INTEGER},
+      amr = #{amr,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aturstudio.entity.Sentence">
+    update sentence
+    set sentence_id = #{sentenceId,jdbcType=VARCHAR},
+      document_id = #{documentId,jdbcType=VARCHAR},
+      dataset = #{dataset,jdbcType=VARCHAR},
+      sub_dataset = #{subDataset,jdbcType=VARCHAR},
+      sentence = #{sentence,jdbcType=VARCHAR},
+      pos = #{pos,jdbcType=VARCHAR},
+      simple = #{simple,jdbcType=INTEGER},
+      annotation_seq = #{annotationSeq,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

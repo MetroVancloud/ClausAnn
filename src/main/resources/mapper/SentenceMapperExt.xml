@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aturstudio.dao.SentenceMapperExt">
+  <resultMap id="BaseResultMap" type="com.aturstudio.dto.SentenceDTO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sentence_id" jdbcType="VARCHAR" property="sentenceId" />
+    <result column="document_id" jdbcType="VARCHAR" property="documentId" />
+    <result column="dataset" jdbcType="VARCHAR" property="dataset" />
+    <result column="sub_dataset" jdbcType="VARCHAR" property="subDataset" />
+    <result column="sentence" jdbcType="VARCHAR" property="sentence" />
+    <result column="pos" jdbcType="VARCHAR" property="pos" />
+    <result column="annotated" jdbcType="INTEGER" property="annotated" />
+  </resultMap>
+
+  <select id="selectDispatchedSentenceList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    ${_parameter}
+  </select>
+
+</mapper>

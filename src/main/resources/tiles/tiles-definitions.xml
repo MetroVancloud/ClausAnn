@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="clauseSegmentation" template="/WEB-INF/jsp/common/segmentationTemplate.jsp">
+        <put-attribute name="bodyPage" value="/WEB-INF/jsp/statistics/clause_segmentation.jsp" />
+    </definition>
+
+    <!-- 登录页 -->
+    <definition name="login" extends="defaultLogin">
+        <put-attribute name="title" type="string" value="Sign in ClauseAnnotator" />
+        <put-attribute name="body" value="/WEB-INF/jsp/common/login.jsp" />
+    </definition>
+
+    <definition name="homepage" extends="defaultLogin">
+        <put-attribute name="title" type="string" value="HomePage" />
+        <put-attribute name="body" value="/WEB-INF/jsp/homepage.jsp" />
+    </definition>
+
+
+    <definition name="defaultLogin" template="/WEB-INF/jsp/common/loginTemplate.jsp">
+        <put-attribute name="title" type="string" value="" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+        <put-attribute name="commonJS" value="/WEB-INF/jsp/common/commonJS.jsp" />
+        <put-attribute name="commonCSS" value="/WEB-INF/jsp/common/commonCSS.jsp" />
+    </definition>
+
+    <definition name="defaultTemplate" template="/WEB-INF/jsp/common/template.jsp">
+        <put-attribute name="title" type="string" value="新华医院药物不良反应系统" />
+        <put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+        <put-attribute name="commonJS" value="/WEB-INF/jsp/common/commonJS.jsp" />
+        <put-attribute name="commonCSS" value="/WEB-INF/jsp/common/commonCSS.jsp" />
+    </definition>
+
+    <definition name="detailTemplate" template="/WEB-INF/jsp/common/detailTemplate.jsp">
+        <put-attribute name="title" type="string" />
+        <put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="commonJS" value="/WEB-INF/jsp/common/commonJS.jsp" />
+        <put-attribute name="commonCSS" value="/WEB-INF/jsp/common/commonCSS.jsp" />
+    </definition>
+
+    <!-- 登录页 -->
+    <definition name="login" extends="defaultLogin">
+        <put-attribute name="title" type="string" value="Sign in ClauseAnnotator" />
+        <put-attribute name="body" value="/WEB-INF/jsp/common/login.jsp" />
+    </definition>
+
+    <!-- 首页 -->
+    <definition name="home" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/common/home.jsp" />
+    </definition>
+
+    <!-- 异常错误页面 -->
+    <definition name="error" extends="defaultTemplate">
+        <put-attribute name="title" type="string" value="出错了" />
+        <put-attribute name="body" value="/WEB-INF/jsp/common/error.jsp" />
+    </definition>
+
+    <!-- 暂未开发的页面 -->
+    <definition name="toBeDeveloped" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/common/toBeDeveloped.jsp" />
+    </definition>
+
+    <!-- 1. 监测主题 -->
+    <!-- 1.1 监测主题详情页面 -->
+    <definition name="ruleDetail" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/rule/ruleDetail.jsp" />
+    </definition>
+
+    <!-- 2. 监测患者 -->
+    <!-- 2.1 可疑患者 -->
+    <!-- 2.1.1 列表页面 -->
+    <definition name="suspiciousPatientList" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/monitor_patient/suspiciousPatient/suspiciousPatientList.jsp" />
+    </definition>
+
+    <!-- 2.1.2 详情页面 -->
+    <definition name="suspiciousPatientDetail" extends="detailTemplate">
+        <put-attribute name="title" type="string" value="疑似不良反应患者信息" />
+        <put-attribute name="body" value="/WEB-INF/jsp/monitor_patient/suspiciousPatient/suspiciousPatientDetail.jsp" />
+    </definition>
+
+    <!-- 2. 监测患者 -->
+    <!-- 2.2 不良反应报告 -->
+    <!-- 2.2.1 列表页面 -->
+    <definition name="reportList" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/monitor_patient/report/reportList.jsp" />
+    </definition>
+
+    <!-- 2.2.2 详情页面 -->
+    <definition name="reportDetail" extends="detailTemplate">
+        <put-attribute name="title" type="string" value="不良反应报告详情页" />
+        <put-attribute name="body" value="/WEB-INF/jsp/monitor_patient/report/reporDetail.jsp" />
+    </definition>
+
+    <!-- 3. 监测统计 -->
+    <!-- 3.1 统计列表页面 -->
+    <definition name="simpleReportStatistic" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/statistics/simpleReportStatistic.jsp" />
+    </definition>
+
+    <!-- 4. 用户管理 -->
+    <!-- 4.1 用户列表页面 -->
+    <definition name="userList" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/user_manage/user/userList.jsp" />
+    </definition>
+
+    <!-- 4.2 角色列表 -->
+    <definition name="roleList" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/user_manage/role/roleList.jsp" />
+    </definition>
+
+    <!-- 4.3 检验项目列表 -->
+    <definition name="lisItemDictList" extends="defaultTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/user_manage/lis_item_dict/lisItemDictList.jsp" />
+    </definition>
+
+
+
+
+</tiles-definitions>

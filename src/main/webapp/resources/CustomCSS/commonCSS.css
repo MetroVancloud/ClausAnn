@@ -1,0 +1,43 @@
+.sub_title_bar {
+    padding: 3px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.operateTd {
+    width: 50px;
+}
+
+.modal-dialog_scroll {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.modal-content_scroll {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal-body_scroll {
+    overflow-y: scroll;
+    position: absolute;
+    top: 55px;
+    bottom: 65px;
+    width: 100%;
+}
+
+.modal-footer_scroll {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

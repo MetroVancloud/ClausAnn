@@ -1,0 +1,12 @@
+.Wdate{
+	/*border:#c5c5c5 1px solid;*/
+	height:34px;         /*zhang shang changes the height 20px to 34px to match the height of bootstrap edit control */
+	/*background:#fff url(datePicker.png) no-repeat 100px 3px;*/
+	background:#fff url(datePicker.png) no-repeat right 4px center;
+}
+
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}

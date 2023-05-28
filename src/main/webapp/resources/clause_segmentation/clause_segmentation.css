@@ -1,0 +1,267 @@
+#wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#textareaList {
+    width: 100%;
+    margin-top: 10px;
+    float: left;
+    /*margin-top: 50px;*/
+}
+
+.textarea {
+    font-size: 18px;
+    padding: 8px 10px;
+    height: auto;
+    resize: none;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid gray;
+}
+
+.textarea:hover {
+    cursor: text;
+}
+
+#ori_sentence {
+    width: 100%;
+    font-size: 18px;
+    /*margin-top: 20px;*/
+    padding: 10px;
+}
+
+.clause_token {
+    float: left;
+    margin-right: 8px;
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+    padding: 0px 8px;
+    margin-bottom: 8px;
+}
+
+.selected_coordinator {
+    background: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+}
+
+.selected_subordinator {
+    background: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+
+.selected_antecedent {
+    background: #fe7070;
+    color: #fff;
+    border: 1px solid #fe7070;
+}
+
+
+.clause_token:hover {
+    cursor: hand;
+}
+
+.punctuation {
+    float: left;
+    border: none;
+    margin-right: 8px;
+    padding: 0;
+}
+
+.clause_span {
+    float: left;
+    border: none;
+    margin-right: 8px;
+    padding: 0;
+    color: red;
+}
+
+.clause_type_selection {
+    width: 100%;
+    text-align: center;
+}
+
+.clauseDiv {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.subordinateClauseTypeSpan {
+    float: left;
+}
+
+.subordinateTypeCN {
+    float: right;
+    margin-right: 5px;
+    text-decoration: underline;
+    /*color: #007bff;*/
+    cursor: hand;
+}
+
+.ordinatorButton {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+    height: 30px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: hand;
+    margin-bottom: 20px;
+}
+
+.MOS_button {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+    height: 30px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: hand;
+    margin-bottom: 20px;
+    border: 2px solid #17a2b8;
+}
+
+.MOS_buttonSelected {
+    border: 2px solid #17a2b8;
+    background: #17a2b8;
+    color: #fff;
+}
+
+.COT_button {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+    height: 30px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: hand;
+    margin-bottom: 20px;
+    border: 2px solid #20c997;
+}
+
+.COT_buttonSelected {
+    border: 2px solid #20c997;
+    background: #20c997;
+    color: #fff;
+}
+
+.coordinatorButtonUnselected {
+    border: 2px solid #28a745;
+}
+
+.coordinatorButtonSelected {
+    border: 2px solid #28a745;
+    background: #28a745;
+    color: #FFFFFF;
+}
+
+.subordinatorButtonUnselected {
+    border: 2px solid #007bff;
+}
+
+.subordinatorButtonSelected {
+    border: 2px solid #007bff;
+    background: #007bff;
+    color: #FFFFFF;
+}
+
+.antecedentButtonUnselected {
+    border: 2px solid #fe7070;
+}
+
+.antecedentButtonSelected {
+    border: 2px solid #fe7070;
+    background: #fe7070;
+    color: #FFFFFF;
+}
+
+#operation_zone {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#annotation_header {
+    /* border-bottom: 1px px solid #ccc; */
+    font-style: italic;
+    padding: 5px 0 5px 10px;
+    /* width: 40%; */
+    margin-top: 30px;
+    background: #d4e5fe;
+    border-radius: 5px;
+}
+
+#annotation_header span{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#annotator {
+    float: right;
+    text-decoration: none;
+    font-style: initial;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#annotatorLabel {
+    float: right;
+    text-decoration: none;
+    font-style: initial;
+}
+
+.annotation_tab {
+    width: 100%;
+    float: left;
+}
+
+/*.annotationTabSpanList {*/
+/*    float: left;*/
+/*    border-bottom: 1px solid #000;*/
+/*}*/
+
+.annotationTabSpan {
+    /*border-bottom: 1px solid gray;*/
+    border: 1px solid #17a2b8;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: hand;
+    border-radius: 8px;
+}
+
+.annotationTabSpanSelected {
+    color: #FFFFFF;
+    background: #17a2b8;
+    border: 1px solid #17a2b8;
+
+}
+
+.main_or_subordinate {
+    float: left;
+    width: 100%;
+}
+
+.mainSubLabel {
+    float: left;
+    line-height: 30px;
+}
+
+#specifiedAnnotationSeq {
+    float: left;
+    height: 38px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: gray solid 1px;
+    width: 80px;
+    text-align: center;
+    padding-left: 5px;
+}
+
